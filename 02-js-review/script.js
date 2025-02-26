@@ -145,7 +145,7 @@ function getBook(id) {
 
 //Destructuring
 
-const book = getBook(2);
+const book = getBook(3);
 book;
 
 //const title = book.title;
@@ -174,11 +174,51 @@ const updatedBook = {
 	pages: 1210};
 updatedBook;
 
-const summary = `${title}, a ${pages}- is a page long book, was written by ${author} and published in ${publicationDate.split("-")[0]}. The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie` ;
+//function getYear(str){
+//	return str.split("-")[0];
+//}
+
+const getYear = (str) => {
+	return str.split("-")[0];
+}
+console.log(getYear(publicationDate));
+
+const summary = `${title}, a ${pages}- is a page long book, was written by ${author} and published in ${getYear(publicationDate)}. The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie` ;
 summary;
 
 const pageRange = pages > 1000 ? "over a thousand" : "less than 1000";
 
 pageRange;
+
 console.log(`The book has ${pageRange} pages`);
 
+
+console.log(true && "Some string");
+console.log(false && "Some string");
+console.log(hasMovieAdaptation && "This book has a movie");
+
+console.log("Jonas" && "Some string" );
+console.log(0 && "Some string");
+
+console.log(true || "Some string");
+console.log(false || "Some string");
+
+console.log(book.translations.spanish);
+
+const spanishTranslation = book.translations.spanish || "No translation available";
+spanishTranslation;
+
+//console.log(book.reviews.librarything.reviewsCount);
+//const countWrong = book.reviews.librarything.reviewsCount || "no data";
+//countWrong;
+//
+//const count = book.reviews.librarything.reviewsCount ?? "no data";
+//count;
+
+function getTotalReviewCount(book){
+	const goodreads = book.reviews.goodreads.reviewsCount;
+	const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+	librarything;
+	return goodreads + librarything;
+}
+console.log(getTotalReviewCount(book));
