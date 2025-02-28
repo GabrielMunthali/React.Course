@@ -256,5 +256,7 @@ esssentialData;
  const adventureBooks = books.filter((books) => 
 	books.genres.includes("adventure")
 ).map((book) => book.title);
-
 adventureBooks;
+
+const pagesAllBooks = books.reduce((sum,book)=> sum + book.pages, 0 );
+pagesAllBooks;
