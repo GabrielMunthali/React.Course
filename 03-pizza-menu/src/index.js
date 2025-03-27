@@ -90,7 +90,11 @@ function Menu(){
 	);
 }
 function Pizza(props){
-  return(
+	console.log(props);
+
+	if(props.pizzaObj.soldOut) return null;
+
+	return(
 	<li className="pizza">
 		<img src={props.pizzaObj.photoName} alt={props.pizzaObj.name}/>
 		<div>
@@ -99,16 +103,22 @@ function Pizza(props){
 			<span>{props.pizzaObj.price}</span>
 		</div>
 	</li>
-  );
-}
+	);
+	}
 
 function Footer(){
 
 	const hour =  new Date().getHours();
-	const openHour = 12;
+	const openHour = 20;
 	const closeHour = 22;
 	const isOpen =  hour >= openHour && hour <= closeHour;
 	console.log(isOpen);
+
+	if (!isOpen)
+		return(
+			<p>We're happy to welcome you between {openHour}:00. and {closeHour}:00.</p>
+		);
+			
 
 	return (
 		<footer className="footer">
@@ -129,6 +139,7 @@ function Footer(){
 	);
 	
 }
+
 
 
 
