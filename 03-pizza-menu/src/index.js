@@ -76,13 +76,19 @@ function Menu(){
 		<main className="menu">
 			<h2>Our Menu</h2>
 			
-			{numPizzas ? (
-				<ul className="pizzas">
-				{pizzaData.map(pizza => (
-						<Pizza pizzaObj={pizza} key={pizza.name}/>
-					))
-				}
-			</ul>
+			{numPizzas > 0 ? (
+				<React.Fragment>
+					<p>
+						Authentic Italian cuisine. 6 creative dishes to choose from. ALl from our stone oven, all organic, all delicious.
+					</p>
+
+					<ul className="pizzas">
+						{pizzaData.map(pizza => (
+								<Pizza pizzaObj={pizza} key={pizza.name}/>
+							))
+						}
+					</ul>
+				</React.Fragment>
 			) : (
 				<p>We're working on our menu. Please come back later :)</p>
 			)}
